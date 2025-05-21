@@ -57,6 +57,7 @@
   </style>
 </head>
 <body>
+  <div id="gif-container" style="position: fixed; top: 10%; left: 10%; z-index: 1000;"></div>
   <h1>⚠ SLAPIVERSARY ⚠</h1>
   <div id="countdown"></div>
   <div id="messages"></div>
@@ -113,5 +114,27 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
+  <script>
+  const gifUrls = [
+    '200 (1).webp',
+    '200 (2).webp',
+    '200 (3).webp',
+    '200.webp',
+    'giphy (1).gif',
+    'giphy (1).webp',
+    'giphy.gif',
+    'giphy.webp'
+  ];
+
+  function showRandomGif() {
+    const gifContainer = document.getElementById('gif-container');
+    const randomGif = gifUrls[Math.floor(Math.random() * gifUrls.length)];
+    gifContainer.innerHTML = `<img src="${randomGif}" style="max-width: 250px; height: auto;">`;
+    setTimeout(() => {
+      gifContainer.innerHTML = '';
+    }, 5000);
+  }
+  setInterval(showRandomGif, Math.floor(Math.random() * (30000 - 15000)) + 15000);
+</script>
 </body>
 </html>
